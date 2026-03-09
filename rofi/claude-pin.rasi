@@ -1,0 +1,54 @@
+* {
+    font: "JetBrainsMono Nerd Font 13";
+
+    bg:         #181616;
+    bg-alt:     #282727;
+    fg:         #c5c9c5;
+    accent:     #c4b28a;
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    fullscreen: true;
+    background-color: @bg;
+    padding: 0;
+}
+
+mainbox {
+    padding: 60px 120px;
+    spacing: 16px;
+}
+
+inputbar {
+    enabled: false;
+}
+
+message {
+    background-color: transparent;
+    padding: 0;
+}
+
+textbox {
+    text-color: @fg;
+    background-color: transparent;
+}
+
+listview {
+    lines: 1;
+    background-color: transparent;
+}
+
+element {
+    padding: 12px 16px;
+    background-color: @bg-alt;
+    border-radius: 8px;
+    horizontal-align: 0.5;
+}
+
+element-text {
+    text-color: @accent;
+    background-color: transparent;
+    horizontal-align: 0.5;
+}

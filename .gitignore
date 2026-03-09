@@ -1,8 +1,4 @@
-tt.*
-.tests
-doc/tags
-debug
-.repro
-foo.*
-*.log
-data
+nvim/lazy-lock.json
+nvim/spell/
+nvim/Untitled
+.DS_Store

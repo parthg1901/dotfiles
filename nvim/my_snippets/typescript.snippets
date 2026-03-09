@@ -1,0 +1,414 @@
+snippet head "TypeScript source file header" b
+/**
+ * Description: $1
+ * Author: $2
+ * Created: `!v strftime("%Y-%m-%d %H:%M:%S%z")`
+ */
+$0
+endsnippet
+
+snippet interface "TypeScript interface" b
+interface ${1:InterfaceName} {
+	$0
+}
+endsnippet
+
+snippet type "TypeScript type alias" b
+type ${1:TypeName} = ${2:type};
+endsnippet
+
+snippet enum "TypeScript enum" b
+enum ${1:EnumName} {
+	${2:VALUE} = '${3:value}',
+	$0
+}
+endsnippet
+
+snippet func "function declaration" b
+function ${1:functionName}(${2:params}): ${3:ReturnType} {
+	$0
+}
+endsnippet
+
+snippet arrow "arrow function" b
+const ${1:functionName} = (${2:params}): ${3:ReturnType} => {
+	$0
+};
+endsnippet
+
+snippet arrowi "arrow function inline" b
+const ${1:functionName} = (${2:params}): ${3:ReturnType} => ${4:returnValue};
+endsnippet
+
+snippet async "async function" b
+async function ${1:functionName}(${2:params}): Promise<${3:ReturnType}> {
+	$0
+}
+endsnippet
+
+snippet arrowa "async arrow function" b
+const ${1:functionName} = async (${2:params}): Promise<${3:ReturnType}> => {
+	$0
+};
+endsnippet
+
+snippet class "class declaration" b
+class ${1:ClassName} {
+	constructor(${2:params}) {
+		$3
+	}
+	
+	$0
+}
+endsnippet
+
+snippet method "class method" b
+${1:methodName}(${2:params}): ${3:ReturnType} {
+	$0
+}
+endsnippet
+
+snippet getter "getter method" b
+get ${1:propertyName}(): ${2:PropertyType} {
+	$0
+}
+endsnippet
+
+snippet setter "setter method" b
+set ${1:propertyName}(${2:value}: ${3:PropertyType}) {
+	$0
+}
+endsnippet
+
+snippet prop "class property" b
+${1:propertyName}: ${2:PropertyType} = ${3:initialValue};
+endsnippet
+
+snippet propreadonly "readonly class property" b
+readonly ${1:propertyName}: ${2:PropertyType} = ${3:initialValue};
+endsnippet
+
+snippet propprivate "private class property" b
+private ${1:propertyName}: ${2:PropertyType} = ${3:initialValue};
+endsnippet
+
+snippet propprotected "protected class property" b
+protected ${1:propertyName}: ${2:PropertyType} = ${3:initialValue};
+endsnippet
+
+snippet proppublic "public class property" b
+public ${1:propertyName}: ${2:PropertyType} = ${3:initialValue};
+endsnippet
+
+snippet const "const declaration" b
+const ${1:variableName}: ${2:Type} = ${3:value};
+endsnippet
+
+snippet let "let declaration" b
+let ${1:variableName}: ${2:Type} = ${3:value};
+endsnippet
+
+snippet var "var declaration" b
+var ${1:variableName}: ${2:Type} = ${3:value};
+endsnippet
+
+snippet import "import statement" b
+import ${1:module} from '${2:path}';
+endsnippet
+
+snippet importd "import with destructuring" b
+import { ${1:component} } from '${2:path}';
+endsnippet
+
+snippet importt "import type" b
+import type { ${1:Type} } from '${2:path}';
+endsnippet
+
+snippet export "export statement" b
+export default ${1:component};
+endsnippet
+
+snippet exportn "named export" b
+export { ${1:component} };
+endsnippet
+
+snippet exportt "export type" b
+export type { ${1:Type} };
+endsnippet
+
+snippet exporti "export interface" b
+export interface ${1:InterfaceName} {
+	$0
+}
+endsnippet
+
+snippet try "try-catch block" b
+try {
+	$1
+} catch (error) {
+	console.error('Error:', error);
+	$0
+}
+endsnippet
+
+snippet if "if statement" b
+if (${1:condition}) {
+	$0
+}
+endsnippet
+
+snippet ife "if-else statement" b
+if (${1:condition}) {
+	$2
+} else {
+	$0
+}
+endsnippet
+
+snippet for "for loop" b
+for (let ${1:i} = 0; ${1:i} < ${2:array}.length; ${1:i}++) {
+	$0
+}
+endsnippet
+
+snippet forin "for-in loop" b
+for (const ${1:key} in ${2:object}) {
+	$0
+}
+endsnippet
+
+snippet forof "for-of loop" b
+for (const ${1:item} of ${2:array}) {
+	$0
+}
+endsnippet
+
+snippet map "array map" b
+${1:array}.map((${2:item}) => {
+	$0
+})
+endsnippet
+
+snippet filter "array filter" b
+${1:array}.filter((${2:item}) => {
+	$0
+})
+endsnippet
+
+snippet reduce "array reduce" b
+${1:array}.reduce((${2:acc}, ${3:item}) => {
+	$0
+}, ${4:initialValue})
+endsnippet
+
+snippet promise "Promise" b
+new Promise<${1:ReturnType}>((resolve, reject) => {
+	$0
+});
+endsnippet
+
+snippet then "Promise.then" b
+.then((${1:result}) => {
+	$0
+})
+endsnippet
+
+snippet catch "Promise.catch" b
+.catch((${1:error}) => {
+	console.error('Error:', ${1:error});
+	$0
+})
+endsnippet
+
+snippet asyncawait "async/await" b
+const ${1:result}: ${2:Type} = await ${3:promise};
+$0
+endsnippet
+
+snippet useeffect "React useEffect" b
+useEffect(() => {
+	$1
+}, [${2:dependencies}]);
+endsnippet
+
+snippet usestate "React useState" b
+const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<${2:StateType}>(${3:initialValue});
+endsnippet
+
+snippet usecallback "React useCallback" b
+const ${1:callback} = useCallback(() => {
+	$2
+}, [${3:dependencies}]);
+endsnippet
+
+snippet usememo "React useMemo" b
+const ${1:memoizedValue} = useMemo(() => {
+	$2
+}, [${3:dependencies}]);
+endsnippet
+
+snippet useref "React useRef" b
+const ${1:ref} = useRef<${2:RefType}>(${3:initialValue});
+endsnippet
+
+snippet component "React functional component" b
+const ${1:ComponentName} = (${2:props}: ${1:ComponentName}Props) => {
+	$0
+	
+	return (
+		<div>
+			${3:content}
+		</div>
+	);
+};
+
+export default ${1:ComponentName};
+endsnippet
+
+snippet componentp "React component with props interface" b
+interface ${1:ComponentName}Props {
+	$2
+}
+
+const ${1:ComponentName} = ({ ${3:props} }: ${1:ComponentName}Props) => {
+	$0
+	
+	return (
+		<div>
+			${4:content}
+		</div>
+	);
+};
+
+export default ${1:ComponentName};
+endsnippet
+
+snippet page "Next.js page component" b
+import { NextPage } from 'next';
+
+const ${1:PageName}: NextPage = () => {
+	$0
+	
+	return (
+		<div>
+			${2:content}
+		</div>
+	);
+};
+
+export default ${1:PageName};
+endsnippet
+
+snippet api "Next.js API route" b
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+export default function handler(
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
+	$0
+}
+endsnippet
+
+snippet middleware "Next.js middleware" b
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+export function middleware(request: NextRequest) {
+	$0
+	
+	return NextResponse.next();
+}
+endsnippet
+
+snippet test "Jest test" b
+describe('${1:testSuite}', () => {
+	it('${2:should do something}', () => {
+		$0
+	});
+});
+endsnippet
+
+snippet testa "Jest test with async" b
+describe('${1:testSuite}', () => {
+	it('${2:should do something}', async () => {
+		$0
+	});
+});
+endsnippet
+
+snippet generic "generic function" b
+function ${1:functionName}<${2:T}>(${3:params}): ${4:ReturnType} {
+	$0
+}
+endsnippet
+
+snippet genericc "generic class" b
+class ${1:ClassName}<${2:T}> {
+	constructor(${3:params}) {
+		$4
+	}
+	
+	$0
+}
+endsnippet
+
+snippet union "union type" b
+type ${1:TypeName} = ${2:Type1} | ${3:Type2};
+endsnippet
+
+snippet intersection "intersection type" b
+type ${1:TypeName} = ${2:Type1} & ${3:Type2};
+endsnippet
+
+snippet partial "Partial utility type" b
+type ${1:TypeName} = Partial<${2:BaseType}>;
+endsnippet
+
+snippet required "Required utility type" b
+type ${1:TypeName} = Required<${2:BaseType}>;
+endsnippet
+
+snippet pick "Pick utility type" b
+type ${1:TypeName} = Pick<${2:BaseType}, '${3:property}'>;
+endsnippet
+
+snippet omit "Omit utility type" b
+type ${1:TypeName} = Omit<${2:BaseType}, '${3:property}'>;
+endsnippet
+
+snippet record "Record utility type" b
+type ${1:TypeName} = Record<${2:KeyType}, ${3:ValueType}>;
+endsnippet
+
+snippet return "return statement" b
+return ${1:value};
+endsnippet
+
+snippet returna "return async" b
+return await ${1:promise};
+endsnippet
+
+snippet throw "throw error" b
+throw new Error('${1:error message}');
+endsnippet
+
+snippet log "console.log" b
+console.log($1);
+$0
+endsnippet
+
+snippet logj "console.log JSON" b
+console.log(JSON.stringify($1, null, 2));
+$0
+endsnippet
+
+snippet err "console.error" b
+console.error($1);
+$0
+endsnippet
+
+snippet warn "console.warn" b
+console.warn($1);
+$0
+endsnippet 

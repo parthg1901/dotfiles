@@ -1,0 +1,74 @@
+* {
+    font: "JetBrainsMono Nerd Font 13";
+
+    bg:         #181616ee;
+    bg-alt:     #282727;
+    fg:         #c5c9c5;
+    fg-dim:     #a6a69c;
+    accent:     #c4b28a;
+    green:      #8a9a7b;
+    red:        #c4746e;
+    border-col: #c4b28a44;
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 620px;
+    border-radius: 16px;
+    border: 1px solid;
+    border-color: @border-col;
+    background-color: @bg;
+    padding: 0;
+}
+
+mainbox {
+    padding: 20px;
+    spacing: 12px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius: 10px;
+    padding: 14px 16px;
+    spacing: 10px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @accent;
+}
+
+entry {
+    text-color: @fg;
+    placeholder: "Ask anything...";
+    placeholder-color: @fg-dim;
+}
+
+message {
+    background-color: @bg-alt;
+    border-radius: 10px;
+    padding: 12px 16px;
+}
+
+textbox {
+    text-color: @fg-dim;
+}
+
+listview {
+    background-color: transparent;
+    scrollbar: false;
+    spacing: 0;
+    lines: 0;
+}
+
+element {
+    padding: 0;
+    background-color: transparent;
+}
+
+element-text {
+    text-color: @fg;
+    background-color: transparent;
+}

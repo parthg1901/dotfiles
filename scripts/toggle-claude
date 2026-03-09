@@ -1,0 +1,51 @@
+#!/bin/bash
+# Rofi-based Claude assistant
+
+# --- Input ---
+QUERY=$(rofi -dmenu \
+    -p "Claude" \
+    -theme "$HOME/.config/rofi/claude.rasi")
+
+[ -z "$QUERY" ] && exit 0
+
+# --- Thinking ---
+NOTIFY_ID=$(notify-send "Claude" "Thinking..." --print-id 2>/dev/null)
+
+# --- Call Claude ---
+unset CLAUDECODE
+RESPONSE=$(cd "$HOME" && claude -p "$QUERY" 2>/dev/null)
+
+# --- Dismiss ---
+notify-send "Claude" "Done" --replace-id="$NOTIFY_ID" --expire-time=1 2>/dev/null
+
+# --- Escape pango markup ---
+SAFE_RESPONSE=$(echo "$RESPONSE" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
+SAFE_QUERY=$(echo "$QUERY" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
+
+DISPLAY_MSG="<b>$SAFE_QUERY</b>
+<span size='small'>
+</span>
+$SAFE_RESPONSE"
+
+# --- Show response — pick action ---
+ACTION=$(printf "Copy to clipboard\nPin to desktop\nDismiss" | rofi -dmenu \
+    -p "Claude" \
+    -mesg "$DISPLAY_MSG" \
+    -theme "$HOME/.config/rofi/claude-response.rasi")
+
+case "$ACTION" in
+    "Copy to clipboard")
+        echo "$RESPONSE" | xclip -selection clipboard
+        notify-send "Claude" "Copied to clipboard" --expire-time=2 2>/dev/null
+        ;;
+    "Pin to desktop")
+        PIN_FILE=$(mktemp /tmp/claude-pin-XXXX.md)
+        printf "# %s\n\n%s\n" "$QUERY" "$RESPONSE" > "$PIN_FILE"
+        kitty --class "claude-pin" \
+              --title "Claude Pin" \
+              --directory "$HOME" \
+              --start-as fullscreen \
+              -e bash -c "$HOME/go/bin/glow -p '$PIN_FILE'; rm '$PIN_FILE'" &
+        disown
+        ;;
+esac
