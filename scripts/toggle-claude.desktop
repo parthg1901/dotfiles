@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Toggle Claude Assistant
+Comment=Toggle floating Claude Code assistant
+Exec=/home/parth/.local/bin/toggle-claude
+Icon=utilities-terminal
+Type=Application
+Categories=Utility;
+NoDisplay=true
